@@ -5,11 +5,11 @@ import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
-// Dynamic import for ReactQuill
+
 const ReactQuill = dynamic(() => import("react-quill-new"), { ssr: false });
 import "react-quill-new/dist/quill.snow.css";
 
-// Type-safe ref for ReactQuill
+
 type QuillRefType = {
   getEditor: () => any;
 };
@@ -23,7 +23,7 @@ export default function NewPostPage() {
 
   const quillRef = useRef<QuillRefType | null>(null);
 
-  // Image handler for ReactQuill
+  
   const imageHandler = () => {
     const input = document.createElement("input");
     input.type = "file";
@@ -49,7 +49,7 @@ export default function NewPostPage() {
         const range = editor.getSelection(true);
         editor.insertEmbed(range.index, "image", imageUrl);
 
-        // Resize inserted images
+        
         setTimeout(() => {
           const imgs = document.querySelectorAll(".ql-editor img");
           imgs.forEach((img) => {
@@ -86,7 +86,7 @@ export default function NewPostPage() {
     []
   );
 
-  // Submit post
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -108,7 +108,7 @@ export default function NewPostPage() {
     }
   };
 
-  // AI generate dummy content
+  
   const handleGenerateAI = () => {
     setContent(
       "Here's an inspiring post written by AI. You can edit or expand it as you like!"
@@ -125,7 +125,7 @@ export default function NewPostPage() {
         onSubmit={handleSubmit}
         className="space-y-6 w-full max-w-3xl bg-white p-8 rounded-2xl shadow-lg"
       >
-        {/* Title */}
+       
         <input
           type="text"
           placeholder="Enter post title..."
@@ -135,7 +135,7 @@ export default function NewPostPage() {
           className="w-full border border-[#e6ccb2] p-4 rounded-md bg-white text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#9c6644] transition"
         />
 
-        {/* AI Generate */}
+       
         <div className="flex justify-end">
           <button
             type="button"
@@ -146,7 +146,7 @@ export default function NewPostPage() {
           </button>
         </div>
 
-        {/* Editor */}
+       
         <div className="border border-[#e6ccb2] rounded-md overflow-hidden">
           <ReactQuill
             ref={quillRef}
@@ -158,7 +158,7 @@ export default function NewPostPage() {
           />
         </div>
 
-        {/* Status */}
+      
         <div className="flex flex-col">
           <label className="text-gray-600 font-medium mb-1">Post Status</label>
           <select
@@ -172,7 +172,7 @@ export default function NewPostPage() {
           </select>
         </div>
 
-        {/* Actions */}
+     
         <div className="flex gap-3 justify-end">
           <button
             type="button"

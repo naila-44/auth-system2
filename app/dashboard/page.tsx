@@ -58,7 +58,6 @@ export default function DashboardPage() {
   fetchUser();
 }, [router]);
 
-  // 🔹 Fetch posts
   const fetchPosts = async () => {
     try {
       const res = await fetch("/api/dashboard", { cache: "no-store" });
@@ -72,8 +71,6 @@ export default function DashboardPage() {
   useEffect(() => {
     if (user) fetchPosts();
   }, [user]);
-
-  // 🔹 Delete post
   const handleDelete = async (id: string) => {
     if (!confirm("Delete this post?")) return;
     try {
@@ -84,8 +81,6 @@ export default function DashboardPage() {
       console.error(err);
     }
   };
-
-  // 🔹 Publish post
   const handlePublish = async (id: string) => {
     try {
       const res = await fetch("/api/dashboard", {
@@ -103,7 +98,7 @@ export default function DashboardPage() {
     }
   };
 
-  // 🔹 Stats
+  
   const totalPosts = posts.length;
   const publishedCount = posts.filter((p) => p.published).length;
   const draftCount = totalPosts - publishedCount;
@@ -113,7 +108,7 @@ export default function DashboardPage() {
   ];
   const COLORS = ["#A47551", "#D9BCA3"];
 
-  // 🔹 Weekly Chart
+ 
   const getWeekLabel = (date: Date) => {
     const firstDay = new Date(date);
     firstDay.setDate(date.getDate() - date.getDay());
@@ -130,8 +125,7 @@ export default function DashboardPage() {
     posts: weekCounts[week],
   }));
 
-  // 🔹 Filters
-  const filteredPosts = posts.filter((p) => {
+   const filteredPosts = posts.filter((p) => {
     const matchSearch = p.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchType =
       filterType === "all" ? true : filterType === "published" ? p.published : !p.published;
@@ -146,7 +140,7 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-6 mt-12">
-      {/* 🔹 Stats */}
+     
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt">
         {[{ label: "Total", value: totalPosts }, { label: "Published", value: publishedCount }, { label: "Drafts", value: draftCount }].map(
           (s, i) => (
@@ -161,9 +155,9 @@ export default function DashboardPage() {
         )}
       </div>
 
-      {/* 🔹 Charts */}
+  
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Pie */}
+      
         <div className="bg-white/60 border border-[#f0e6d8] p-3 rounded-xl shadow">
           <h3 className="text-[#7f5539] text-center font-semibold mb-2">Posts Overview</h3>
           <ResponsiveContainer width="100%" height={220}>
@@ -196,8 +190,6 @@ export default function DashboardPage() {
             </button>
           )}
         </div>
-
-        {/* Bar */}
         <div className="bg-white/60 border border-[#f0e6d8] p-3 rounded-xl shadow">
           <h3 className="text-[#7f5539] text-center font-semibold mb-2">Weekly Posts</h3>
           <ResponsiveContainer width="100%" height={220}>
@@ -226,7 +218,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* 🔹 Posts List */}
+    
       <div>
         <h2 className="text-xl font-semibold text-[#7f5539] mb-2">Recent Posts</h2>
         <div className="space-y-2">

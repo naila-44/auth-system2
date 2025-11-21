@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { connect } from "@/lib/db";
 import Post from "@/lib/models/Post";
 
-// ✅ GET POST BY ID
+
 export async function GET(
   _req: Request,
   { params }: { params: { id: string } }
@@ -11,7 +11,7 @@ export async function GET(
   try {
     await connect();
 
-    const { id } = params; // ✅ no need to await
+    const { id } = params; 
     if (!id || !mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { success: false, error: "Invalid or missing post ID." },
@@ -37,7 +37,7 @@ export async function GET(
   }
 }
 
-// ✅ DELETE POST
+
 export async function DELETE(
   _req: Request,
   { params }: { params: { id: string } }
@@ -74,7 +74,7 @@ export async function DELETE(
   }
 }
 
-// ✅ UPDATE POST
+
 export async function PUT(
   req: Request,
   { params }: { params: { id: string } }

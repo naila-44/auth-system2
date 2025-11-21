@@ -6,7 +6,7 @@ export async function getUserFromToken(req: NextRequest | Request): Promise<JwtP
     const authHeader = req.headers.get("authorization");
     if (!authHeader) return null;
 
-    const token = authHeader.split(" ")[1]; // Bearer <token>
+    const token = authHeader.split(" ")[1]; 
     if (!token) return null;
 
     return verifyToken(token);

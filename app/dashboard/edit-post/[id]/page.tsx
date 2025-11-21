@@ -81,7 +81,7 @@ export default function EditPostPage() {
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Title */}
+        
           <input
             type="text"
             name="title"
@@ -92,7 +92,7 @@ export default function EditPostPage() {
             className="w-full text-black placeholder:text-gray-500 border border-[#d6ccc2] rounded-lg p-3 focus:ring-[#7f5539] focus:border-[#7f5539] transition"
           />
 
-          {/* Content */}
+         
           <div className="border border-[#d6ccc2] rounded-lg overflow-hidden">
             <ReactQuill
               value={post.content || ""} 
@@ -102,7 +102,6 @@ export default function EditPostPage() {
             />
           </div>
 
-          {/* Image URL */}
           <input
             type="text"
             name="imageUrl"
@@ -112,7 +111,7 @@ export default function EditPostPage() {
             className="w-full text-black placeholder:text-gray-500 border border-[#d6ccc2] rounded-lg p-3 focus:ring-[#7f5539] focus:border-[#7f5539] transition"
           />
 
-          {/* Status */}
+        
           <select
   name="status"
   value={post.status}
@@ -123,7 +122,7 @@ export default function EditPostPage() {
   <option value="published">Published</option>
 </select>
 
-          {/* Submit */}
+       
           <div className="flex justify-end">
             <button
               type="submit"

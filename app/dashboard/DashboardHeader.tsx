@@ -10,7 +10,7 @@ export default function DashboardHeader() {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  // 🔹 Fetch user info on mount
+  
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -24,7 +24,7 @@ export default function DashboardHeader() {
     fetchUser();
   }, []);
 
-  // 🔹 Logout
+ 
   const handleLogout = async () => {
     try {
       const res = await fetch("/api/auth/logout", { method: "POST" });

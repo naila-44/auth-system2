@@ -9,16 +9,16 @@ export const config = {
 let io: IOServer;
 
 export async function GET(req: NextRequest) {
-  // Just respond to GET requests so socket can connect
+
   return new Response("Socket route ready");
 }
 
 export async function POST(req: NextRequest) {
-  // POST is not used here, just return OK
+  
   return new Response("Use GET to connect Socket.IO");
 }
 
-// Initialize Socket.IO once
+
 export async function PATCH(req: NextRequest, res: any) {
   if (!res.socket.server.io) {
     console.log("Initializing Socket.IO server...");

@@ -34,7 +34,7 @@ export default function Sidebar() {
       }`}
     >
       <div className="p-4">
-        {/* Top section */}
+      
         <div className="flex items-center justify-between mb-8">
           {!collapsed && (
             <Link
@@ -44,7 +44,7 @@ export default function Sidebar() {
               Whisply
             </Link>
           )}
-          {/* Menu button - only visible on mobile */}
+         
           <button
             onClick={() => setCollapsed(!collapsed)}
             className="p-2 rounded hover:bg-[#f0e6d8] lg:hidden"
@@ -53,7 +53,7 @@ export default function Sidebar() {
           </button>
         </div>
 
-        {/* Navigation Links */}
+     
         <nav className="space-y-1">
           {navLinks.map((link, idx) => (
             <Link
@@ -70,7 +70,7 @@ export default function Sidebar() {
         </nav>
       </div>
 
-      {/* Bottom Links */}
+    
       <div className="p-4 border-t space-y-1">
         {bottomLinks.map((link, idx) => (
           <Link

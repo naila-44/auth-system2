@@ -15,8 +15,6 @@ export async function GET(req: Request) {
         { status: 400 }
       );
     }
-
-    // ✅ 1. Find current post
     const currentPost = await Post.findById(postId);
     if (!currentPost) {
       return NextResponse.json(
@@ -24,16 +22,10 @@ export async function GET(req: Request) {
         { status: 404 }
       );
     }
-
-    // ✅ 2. Build a filter for related content
     const query: any = { _id: { $ne: postId } };
-
-    // Try to find posts with similar tags or category if available
     if (currentPost.category) query.category = currentPost.category;
     if (currentPost.tags && currentPost.tags.length > 0)
       query.tags = { $in: currentPost.tags };
-
-    // ✅ 3. Fetch related posts (fallback: most recent ones)
     const relatedPosts = await Post.find(query)
       .sort({ createdAt: -1 })
       .limit(3)

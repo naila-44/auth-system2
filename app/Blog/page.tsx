@@ -21,8 +21,6 @@ export default function BlogPage() {
   // Helper to remove HTML tags from content
   const stripHtml = (html: string): string =>
     html ? html.replace(/<[^>]*>?/gm, "") : "";
-
-  // Fetch published posts
   const fetchPosts = () => {
     axios
       .get("/api/posts/published")
@@ -33,7 +31,7 @@ export default function BlogPage() {
       .catch((err) => console.error("Error fetching posts:", err));
   };
 
-  // Delete a post
+
   const handleDelete = async (id: string) => {
     if (!confirm("Are you sure you want to delete this post?")) return;
     try {
@@ -71,10 +69,10 @@ export default function BlogPage() {
                 className="relative cursor-pointer group bg-white border border-[#d6ccc2] rounded-2xl shadow-sm hover:shadow-md hover:scale-[1.02] transition-all overflow-hidden flex flex-col"
                 onClick={() => router.push(`/Blog/${post._id}`)}
               >
-                {/* Edit & Delete buttons (top-right, one line) */}
+                
                 <div
                   className="absolute top-2 right-2 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity"
-                  onClick={(e) => e.stopPropagation()} // prevent card click
+                  onClick={(e) => e.stopPropagation()} 
                 >
                  <button
   onClick={() => router.push(`/dashboard/edit-post/${post._id}`)}
@@ -92,7 +90,7 @@ export default function BlogPage() {
 
                 </div>
 
-                {/* Post image */}
+              
                 {post.imageUrl && (
                   <img
                     src={post.imageUrl}
@@ -101,7 +99,7 @@ export default function BlogPage() {
                   />
                 )}
 
-                {/* Post content */}
+               
                 <div className="p-5 flex flex-col flex-1">
                   <h2 className="text-xl font-semibold text-[#3e2723] mb-2 group-hover:text-[#7f5539] transition">
                     {post.title}

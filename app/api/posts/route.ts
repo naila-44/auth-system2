@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   try {
     await connect();
 
-    const body = await req.json(); // <-- parse JSON
+    const body = await req.json(); 
     const { title, content, status, imageUrl } = body;
 
     if (!title || !content) {
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     const newPost = new Post({
       title,
       content,
-      imageUrl: imageUrl || "", // optional image
+      imageUrl: imageUrl || "",
       published,
     });
 

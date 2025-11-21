@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
 
-// ✅ Setup Cloudinary credentials from environment variables
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME!,
   api_key: process.env.CLOUDINARY_API_KEY!,
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     const buffer = Buffer.from(await file.arrayBuffer());
 
-    // 🚀 Upload to Cloudinary
+ 
     const result = await new Promise((resolve, reject) => {
       cloudinary.uploader.upload_stream({ folder: "blog_uploads" }, (err, res) => {
         if (err) reject(err);

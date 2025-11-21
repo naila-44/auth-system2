@@ -27,13 +27,13 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json(
-      { message: "✅ Signup successful!" },
+      { message: "Signup successful!" },
       { status: 201 }
     );
   } catch (err) {
     console.error("Signup error:", err);
     return NextResponse.json(
-      { error: "⚠️ Something went wrong. Please try again." },
+      { error: "Something went wrong. Please try again." },
       { status: 500 }
     );
   }
